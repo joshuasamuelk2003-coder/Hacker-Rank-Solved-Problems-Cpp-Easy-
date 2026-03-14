@@ -1,0 +1,26 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    int size, index, start_index, end_index;
+    cin >> size;
+    vector<int> ints(size, 0);
+    for (int i = 0; i < size; i++) {
+        cin >> ints.at(i);
+    }
+    cin >> index >> start_index >> end_index;
+    ints.erase(ints.begin() + index - 1);
+    ints.erase(ints.begin() + start_index - 1, ints.begin() + end_index - 1);
+    cout << ints.size() << "\n";
+    for (int integer : ints) {
+        cout << integer << " ";
+    }
+    return 0;
+}
