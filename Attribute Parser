@@ -1,0 +1,60 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <stack>
+#include <sstream>
+#include <unordered_map>
+using namespace std;
+
+int main() 
+{ 
+    int count, query; 
+    cin >> count >> query; 
+    cin.ignore(); 
+    
+    stack<string> st; 
+    unordered_map<string, string> mp; 
+    
+    while(count--){ 
+        string line; 
+        getline(cin, line); 
+        
+        if(line[1] == '/'){ 
+            st.pop(); 
+            continue; 
+        } 
+        
+        // Remove the opening and closing angle brackets
+        line = line.substr(1, line.size() - 2); 
+        stringstream ss(line);
+
+        string tag;
+        ss >> tag;
+
+        string path = tag;
+        if(!st.empty()) 
+            path = st.top() + "." + tag;
+        st.push(path);
+
+        string attr, eq, val;
+        while(ss >> attr >> eq >> val) {
+            // Remove quotes from value
+            val = val.substr(1, val.size() - 2);
+            mp[path + "~" + attr] = val;
+        }
+    }
+    
+    while(query--) {
+        string query_str;
+        getline(cin, query_str);
+
+        if(mp.count(query_str))
+            cout << mp[query_str] << endl;
+        else
+            cout << "Not Found!" << endl;
+    }
+    
+    return 0;
+}
