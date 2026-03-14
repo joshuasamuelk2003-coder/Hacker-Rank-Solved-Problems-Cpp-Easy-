@@ -1,0 +1,39 @@
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+class Student
+{
+public:
+    int age;
+    string first_name;
+    string last_name;
+    int standard;
+    
+    string to_string() {
+        stringstream ss;
+        ss << age << "," << first_name << "," << last_name << "," << standard;
+        return ss.str();
+    }
+};
+
+int main() {
+    int age, standard;
+    string first_name, last_name;
+    
+    cin >> age >> first_name >> last_name >> standard;
+    
+    Student st;
+    st.age = age;
+    st.standard = standard;
+    st.first_name = first_name;
+    st.last_name = last_name;
+    
+    cout << st.age << "\n";
+    cout << st.last_name << ", " << st.first_name << "\n";
+    cout << st.standard << "\n";
+    cout << "\n";
+    cout << st.to_string();
+    
+    return 0;
+}
