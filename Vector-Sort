@@ -1,0 +1,22 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    int num_ints, current_int;
+    vector<int> ints;
+    scanf("%d", &num_ints);
+    for (int i = 0; i < num_ints; i++) {
+        scanf("%d", &current_int);
+        ints.push_back(current_int);
+    }
+    sort(ints.begin(), ints.end());
+    for (int i = 0; i < num_ints; i++) {
+        printf("%d ", ints[i]);
+    }
+    return 0;
+}
